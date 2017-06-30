@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var db = mongoose.createConnection('mongodb://localhost/sync'); //；连接数据库
+var db = mongoose.createConnection('mongodb://106.14.176.178:27017/sync'); 
 mongoose.Promise = require('bluebird');
 var Schema = mongoose.Schema; //  创建模型
 var ObjectId = mongoose.Schema.Types.ObjectId;
