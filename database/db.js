@@ -14,8 +14,7 @@ var orderSchema = new Schema({
 		required: true
 	},
 	itemName: {
-		type:String,
-		required: true
+		type:String
 	},
 	buyerName: {
 		type:String,
