@@ -41,7 +41,8 @@ router.get('/list', function(req, res) {
 	var field = {
 		itemID: 1,
 		itemName: 1,
-		itemType: 1
+		itemType: 1,
+		itemImg: 1
 	};
 	items.find(content, field, function(err, result) {
 		if (err) {
@@ -138,6 +139,37 @@ router.post('/upload', function(req, res) {
 				});
 		}
 
+	});
+});
+
+router.post('/update', function(req, res) {
+	if (!req.body.itemID) {
+		res.send({
+			result: 'fail',
+			message: 'itemID is required'
+		});
+	}
+	// 数据集
+	var ori = {
+		itemID: req.body.itemID
+	};
+	// 单条件更新
+	var newData = {
+		$set: {
+			itemImg: req.body.itemImg
+		}
+	};
+	items.update(ori, newData, function(err, result) {
+		if (err) {
+			res.send({
+				data: 'error',
+				result: 'failed'
+			});
+		} else {
+			res.send({
+				result: 'success'
+			});
+		}
 	});
 });
 

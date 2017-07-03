@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var orders = require('../database/db').orders;
+var toolBox = require('../tools/tools');
 
 router.post('/insert', function(req, res) {
 	// 数据集
@@ -10,7 +11,9 @@ router.post('/insert', function(req, res) {
 		itemName: req.body.itemName,
 		buyerName: req.body.buyerName,
 		buyerPhone: req.body.buyerPhone,
-		buyerAddress: req.body.buyerAddress
+		buyerAddress: req.body.buyerAddress,
+		creatUser: req.body.creatUser,
+		creatTime: toolBox.formatDate()
 	};
 	// 实例化对象并插入数据
 	var monInsert = new orders(content);
@@ -35,7 +38,9 @@ router.get('/list', function(req, res) {
 		itemName: 1,
 		buyerName: 1,
 		buyerPhone: 1,
-		buyerAddress: 1
+		buyerAddress: 1,
+		creatUser:1,
+		creatTime:1
 	};
 	orders.find(content, field, function(err, result) {
 		if (err) {

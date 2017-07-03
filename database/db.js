@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var db = mongoose.createConnection('mongodb://106.14.176.178:27017/sync'); 
+// var db = mongoose.createConnection('mongodb://106.14.176.178:27017/sync'); 
+var db = mongoose.createConnection('mongodb://localhost/sync'); 
 mongoose.Promise = require('bluebird');
 var Schema = mongoose.Schema; //  创建模型
 var ObjectId = mongoose.Schema.Types.ObjectId;
@@ -27,7 +28,13 @@ var orderSchema = new Schema({
 	buyerAddress: {
 		type:String,
 		required: true
-	}
+	},
+	creatTime: {
+		type:String
+	},
+	creatUser: {
+		type:String
+	},
 }); 
 
 var itemSchema = new Schema({
